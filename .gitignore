@@ -1,0 +1,64 @@
+###
+# Unity folders and files
+###
+[Aa]ssets/[Aa]sset[Ss]tore[Tt]ools*
+[Aa]ssets/[Ss]treaming[Aa]ssets/
+[Aa]ssets/[Pp]lugins/[Ee]ditor/
+[Bb]uild/
+[Bb]uilds/
+[Bb]undles/
+[Ll]ibrary/
+[Ll]ocal[Cc]ache/
+[Ll]ogs/
+[Oo]bj/
+[Tt]emp/
+[Uu]nity[Gg]enerated/
+[Rr]elise/
+[Rr]eliase/
+[Rr]elease/
+
+#Custom WW CI
+[Ll]ocal[Ss]ettings.php
+*_[Aa]utogenerate.cs
+*_[Aa]utogenerate.cs.meta
+
+# file on crash reports
+sysinfo.txt
+# Unity3D generated meta files
+*.pidb.meta
+
+###
+# VS/MD solution and project files
+###
+[Ee]xportedObj/
+*.booproj
+*.csproj
+*.sln
+*.suo
+*.svd
+*.unityproj
+*.user
+*.userprefs
+*.pidb
+*.vs*
+*.idea*
+.DS_Store
+
+###
+# OS generated
+###
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+.apk
+
+
+#Ignore all .meta file
+#*.meta
+#But not source file with postfix. which is everything but a folder
+#!*.*.meta
