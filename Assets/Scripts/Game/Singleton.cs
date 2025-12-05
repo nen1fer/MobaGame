@@ -1,16 +1,20 @@
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
+namespace Assets.Scripts.Game
 {
-    public static T Instance { get; private set; }
-    protected virtual void Awake()
+    public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {
-        if (Instance == null)
-            Instance = this as T;
-        else if (Instance == this)
-            return;
-        else
-            DestroyDuplicate();
+        public static T Instance { get; private set; }
+        protected virtual void Awake()
+        {
+            if (Instance == null)
+                Instance = this as T;
+            else if (Instance == this)
+                return;
+            else
+                DestroyDuplicate();
+        }
+        protected virtual void DestroyDuplicate() => Destroy(this);
     }
-    protected virtual void DestroyDuplicate() => Destroy(this);
+
 }

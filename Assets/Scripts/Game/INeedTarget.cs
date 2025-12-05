@@ -1,7 +1,11 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-public interface INeedTarget
+namespace Assets.Scripts.Game
 {
-    float SetViewDistance();
-    void SetPotentialTargets(List<Unit> potentialTargets);
+    public interface INeedTarget
+    {
+        float GetViewDistance();
+        void SetPotentialTargets(List<Unit> potentialTargets);
+    }
+
 }

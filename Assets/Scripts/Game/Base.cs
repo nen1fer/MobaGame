@@ -1,8 +1,12 @@
-public class Base : Unit
+﻿namespace Assets.Scripts.Game
 {
-    protected override void Awake()
+    public class Base : Unit
     {
-        base.Awake();
-        Initialize();
+        protected override void Awake()
+        {
+            base.Awake();
+            Initialize();
+        }
     }
+
 }

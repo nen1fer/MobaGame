@@ -1,9 +1,13 @@
-using UnityEngine;
+﻿using UnityEngine;
 
-public class TeamTag : MonoBehaviour
+namespace Assets.Scripts.Game
 {
-    [SerializeField, Range(1, 2)] private int _teamId;
+    public class TeamTag : MonoBehaviour
+    {
+        [SerializeField, Range(1, 2)] private int _teamId;
 
-    public void SetTeamId(int value) => _teamId = value;
-    public int GetTeamId() => _teamId;
+        public void SetTeamId(int value) => _teamId = value;
+        public int GetTeamId() => _teamId;
+    }
+
 }

@@ -1,17 +1,42 @@
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class Crip : MoveableUnit, INeedTarget
+namespace Assets.Scripts.Game
 {
-    private Unit _target;
-    private void Start()
+    public class Crip : MoveableUnit, INeedTarget
     {
-        Initialize();
-    }
+        private AutoTargetController _targetController;
+        private Unit _target;
+        private void Start()
+        {
+            base.Awake();
+            _targetController = GetComponent<AutoTargetController>();
+        }
 
-    private void Update()
-    {
-        if (_target != null)
-            SetDestination(_target.Position);
+        public override void Initialize()
+        {
+            base.Initialize();
+
+            _targetController.onTargetChanged += SetTarget;
+
+            var bases = GamePlayManager.Instance.GetEnemiesBases(_team);
+            SetDestination(bases[0].Position);
+        }
+
+        private void OnDestroy()
+        {
+            _targetController.onTargetChanged -= SetTarget;
+        }
+
+
+        private void Update()
+        {
+            if (_target.IsNullOrDefault())
+                SetDestination(_target.Position);
+        }
+        public void SetPotentialTargets(List<Unit> potentialTargets) => _targetController.SetPotentialTargets(potentialTargets);
+        public float GetViewDistance() => _targetController.GetViewDistance();
+
+        public void SetTarget(Unit unit) => _target = unit;
     }
-    public void SetTarget(Unit unit) => _target = unit;
 }
