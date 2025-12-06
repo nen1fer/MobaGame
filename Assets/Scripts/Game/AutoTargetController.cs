@@ -7,12 +7,12 @@ namespace Assets.Scripts.Game
     public class AutoTargetController : TargetController, INeedTarget
     {
         [SerializeField] private float _viewDistance;
-        [SerializeField]
-        private List<AttackPriority> _priorities = new List<AttackPriority>
-    {
-        new AttackPriority(typeof(Base), 1),
-        new AttackPriority (typeof(Crip), 20),
-    };
+        [SerializeField] private List<AttackPriority> _priorities = new List<AttackPriority>
+        {
+            new AttackPriority(typeof(Base), 1),
+            new AttackPriority (typeof(Crip), 20),
+            new AttackPriority (typeof(Character), 50),
+        };
 
         public void SetPotentialTargets(List<Unit> potentialTargets)
         {
@@ -23,7 +23,7 @@ namespace Assets.Scripts.Game
 
         private Unit FindEnemyBase()
         {
-            var bases = GamePlayManager.Instance.GetEnemiesBases(_teamTag);
+            var bases = Session.Instance.GamePlayManager.GetEnemiesBases(_teamTag);
             return bases[0];
         }
 

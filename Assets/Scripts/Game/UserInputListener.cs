@@ -53,7 +53,7 @@ namespace Assets.Scripts.Game
 
         private void CheckAxis()
         {
-            var hor = Input.GetAxis("Horizantal");
+            var hor = Input.GetAxis("Horizontal");
             var vert = Input.GetAxis("Vertical");
 
             if (hor != 0 || vert != 0)

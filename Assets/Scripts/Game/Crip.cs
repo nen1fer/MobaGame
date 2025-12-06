@@ -7,7 +7,7 @@ namespace Assets.Scripts.Game
     {
         private AutoTargetController _targetController;
         private Unit _target;
-        private void Start()
+        protected override void Awake()
         {
             base.Awake();
             _targetController = GetComponent<AutoTargetController>();
@@ -19,7 +19,7 @@ namespace Assets.Scripts.Game
 
             _targetController.onTargetChanged += SetTarget;
 
-            var bases = GamePlayManager.Instance.GetEnemiesBases(_team);
+            var bases = Session.Instance.GamePlayManager.GetEnemiesBases(_team);
             SetDestination(bases[0].Position);
         }
 
@@ -31,12 +31,11 @@ namespace Assets.Scripts.Game
 
         private void Update()
         {
-            if (_target.IsNullOrDefault())
+            if (!_target.IsNullOrDefault())
                 SetDestination(_target.Position);
         }
         public void SetPotentialTargets(List<Unit> potentialTargets) => _targetController.SetPotentialTargets(potentialTargets);
         public float GetViewDistance() => _targetController.GetViewDistance();
-
         public void SetTarget(Unit unit) => _target = unit;
     }
 }

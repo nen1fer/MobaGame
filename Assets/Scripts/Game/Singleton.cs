@@ -16,5 +16,4 @@ namespace Assets.Scripts.Game
         }
         protected virtual void DestroyDuplicate() => Destroy(this);
     }
-
 }

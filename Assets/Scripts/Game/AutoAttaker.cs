@@ -2,6 +2,8 @@
 
 namespace Assets.Scripts.Game
 {
+    [RequireComponent(typeof(TargetController))]
+    [RequireComponent(typeof(WeaponHandler))]
     public class AutoAttaker : MonoBehaviour
     {
         [SerializeField] private Unit _currentTarget;

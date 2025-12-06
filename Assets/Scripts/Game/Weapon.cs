@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Game
 {
+    [Serializable]
     public class Weapon
     {
         [SerializeField] private float _attackRange;

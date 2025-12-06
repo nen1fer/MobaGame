@@ -2,6 +2,8 @@
 
 namespace Assets.Scripts.Game
 {
+    [RequireComponent(typeof(UserInputListener))]
+    [RequireComponent(typeof(SelectionTargetController))]
     public class Player : Character
     {
         private UserInputListener _userInput;
@@ -21,22 +23,29 @@ namespace Assets.Scripts.Game
 
         private void InputDestination(Vector3 obj)
         {
-
+            ResetTarget();
+            SetDestination(obj);
         }
 
         private void ChangeTarget(Unit obj)
         {
-
+            SetStopDistance(GetAttackRange());
+            _target = obj;
         }
 
         private void Movement(Vector2 obj)
         {
-
+            ResetTarget();
+            var hor = obj.x * Vector3.right;
+            var vert = obj.y * Vector3.forward;
+            SetDestination(transform.position + hor + vert);
         }
 
         private void ResetTarget()
         {
-
+            _targetController.ResetTarget();
+            _target = null;
+            SetStopDistance(0);
         }
 
         private void Update()

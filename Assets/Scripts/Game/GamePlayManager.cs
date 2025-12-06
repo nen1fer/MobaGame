@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Game
 {
+    [DefaultExecutionOrder(-1)]
     public class GamePlayManager : MonoBehaviour
     {
         [SerializeField] private int _amountTeams = 2;
@@ -16,13 +17,11 @@ namespace Assets.Scripts.Game
         private float _currentDelay;
         private float _delay = 1f;
 
-        public static GamePlayManager Instance { get; private set; }
-
         private float _battleTime;
 
         private void Awake()
         {
-            Instance = this;
+            Session.Instance.GamePlayManager = this;
             _battleTime = 0;
         }
 
@@ -54,14 +53,14 @@ namespace Assets.Scripts.Game
 
         public void Register(Unit unit)
         {
-            Debug.Log($"{GetType()}::Register unit{unit}");
+            Debug.Log($"{GetType()}::Register unit");
             _allUnits.Add(unit);
             onAdded?.Invoke(unit);
         }
 
         public void Unregister(Unit unit)
         {
-            Debug.Log($"{GetType()}::Unregister unit{unit}");
+            Debug.Log($"{GetType()}::Unregister unit");
             _allUnits.Remove(unit);
             onRemoved?.Invoke(unit);
         }

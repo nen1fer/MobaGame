@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Game
 {
+    [RequireComponent(typeof(AutoTargetController))]
     public class AIUnit : Character, INeedTarget
     {
         private AutoTargetController _targetController;
@@ -19,7 +20,7 @@ namespace Assets.Scripts.Game
             base.Initialize();
             _targetController.onTargetChanged += SetTarget;
         }
-        void Update()
+        private void Update()
         {
             if (!_target.IsNullOrDefault())
                 SetDestination(_target.Position);

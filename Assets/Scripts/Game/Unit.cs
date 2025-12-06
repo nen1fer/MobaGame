@@ -22,17 +22,18 @@ namespace Assets.Scripts.Game
         {
             _health.Initialize();
             _health.onDie += Die;
-            GamePlayManager.Instance.Register(this);
+            Session.Instance.GamePlayManager.Register(this);
         }
 
         private void Die()
         {
-            GamePlayManager.Instance.Unregister(this);
+            Session.Instance.GamePlayManager.Unregister(this);
             Destroy(gameObject, .1f);
         }
 
         public TeamTag GetTeam() => _team;
         public Health GetHealth() => _health;
+        public string GetName() => gameObject.name;
         public Vector3 Position => transform.position;
     }
 
