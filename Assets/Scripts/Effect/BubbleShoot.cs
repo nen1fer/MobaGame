@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace Assets.Scripts.Game
+namespace Assets.Scripts.Effect
 {
     public class BubbleShoot : MonoBehaviour
     {

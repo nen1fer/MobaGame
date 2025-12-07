@@ -33,7 +33,7 @@ namespace Assets.Scripts.Game
 
         public TeamTag GetTeam() => _team;
         public Health GetHealth() => _health;
-        public string GetName() => gameObject.name;
+        public string GetName() => gameObject.name.Substring(0, gameObject.name.IndexOf("("));
         public Vector3 Position => transform.position;
     }
 

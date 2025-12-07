@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using Assets.Scripts.Effect;
 
 namespace Assets.Scripts.Game
 {

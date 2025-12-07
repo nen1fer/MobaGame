@@ -53,14 +53,14 @@ namespace Assets.Scripts.Game
 
         public void Register(Unit unit)
         {
-            Debug.Log($"{GetType()}::Register unit");
+            Debug.Log($"{GetType()}::Register unit {unit.GetName()}");
             _allUnits.Add(unit);
             onAdded?.Invoke(unit);
         }
 
         public void Unregister(Unit unit)
         {
-            Debug.Log($"{GetType()}::Unregister unit");
+            Debug.Log($"{GetType()}::Unregister unit {unit.GetName()}");
             _allUnits.Remove(unit);
             onRemoved?.Invoke(unit);
         }

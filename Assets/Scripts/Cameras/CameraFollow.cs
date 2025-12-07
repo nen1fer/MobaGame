@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.Game
+namespace Assets.Scripts.Cameras
 {
     public class CameraFollow : MonoBehaviour
     {
@@ -8,12 +8,12 @@ namespace Assets.Scripts.Game
 
         private static Vector3? _diff;
 
-        private Camera _camera;
+        private UnityEngine.Camera _camera;
         private float _zoom = 1;
 
         private void OnEnable()
         {
-            _camera = Camera.main;
+            _camera = UnityEngine.Camera.main;
             if (!_diff.HasValue)
                 _diff = _camera.transform.position - transform.position;
         }
