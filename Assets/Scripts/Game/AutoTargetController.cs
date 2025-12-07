@@ -10,6 +10,7 @@ namespace Assets.Scripts.Game
         [SerializeField] private List<AttackPriority> _priorities = new List<AttackPriority>
         {
             new AttackPriority(typeof(Base), 1),
+            new AttackPriority(typeof(Tower), 10),
             new AttackPriority (typeof(Crip), 20),
             new AttackPriority (typeof(Character), 50),
         };

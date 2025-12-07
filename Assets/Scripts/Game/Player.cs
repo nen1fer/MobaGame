@@ -9,6 +9,7 @@ namespace Assets.Scripts.Game
         private UserInputListener _userInput;
         private SelectionTargetController _targetController;
         private Unit _target;
+        private TargetVisible _targetVisible;
 
         protected override void Awake()
         {
@@ -29,8 +30,16 @@ namespace Assets.Scripts.Game
 
         private void ChangeTarget(Unit obj)
         {
+            if (obj == null)
+            {
+                ResetTarget();
+                return;
+            }
             SetStopDistance(GetAttackRange());
             _target = obj;
+            _targetVisible = _target.GetComponentInChildren<TargetVisible>(true);
+            if (!_targetVisible.IsNullOrDefault())
+                _targetVisible.SetVisible(true);
         }
 
         private void Movement(Vector2 obj)
@@ -44,6 +53,9 @@ namespace Assets.Scripts.Game
         private void ResetTarget()
         {
             _targetController.ResetTarget();
+            if (!_targetVisible.IsNullOrDefault())
+                _targetVisible.SetVisible(false);
+            _targetVisible = null;
             _target = null;
             SetStopDistance(0);
         }
