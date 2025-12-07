@@ -21,7 +21,7 @@ namespace Assets.Scripts.Game
 
         protected virtual void Update()
         {
-            if (_currentTarget == null)
+            if (_currentTarget.IsNullOrDefault())
                 return;
 
             if (Vector3.Distance(_currentTarget.Position, Position) > Weapon.GetAttackRange())
@@ -35,6 +35,8 @@ namespace Assets.Scripts.Game
 
             _currentDelay = Weapon.GetAttackInterval();
             _currentTarget.GetHealth().Damage(Weapon.GetDamageValue());
+            var shoot = Instantiate(Weapon.GetShoot());
+            shoot.Init(Position, _currentTarget.Position);
         }
 
         public Vector3 Position => transform.position;
